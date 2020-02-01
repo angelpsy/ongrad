@@ -8,7 +8,31 @@ const routes = [
         path: "/",
         name: "home",
         component: () =>
-            import(/* webpackChunkName: "home" */ "../views/home.vue"),
+            import(/* webpackChunkName: "home" */ "../views/home"),
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: () =>
+            import(/* webpackChunkName: "login" */ "../views/login"),
+        meta: {
+            requiresGuest: true,
+        },
+    },
+    {
+        path: "/list",
+        name: "list",
+        component: () =>
+            import(/* webpackChunkName: "list" */ "../views/list"),
+    },
+    {
+        path: "/add-item",
+        name: "add-item",
+        component: () =>
+            import(/* webpackChunkName: "add-item" */ "../views/add-item"),
+        meta: {
+            requiresAuth: true,
+        },
     },
 ];
 
