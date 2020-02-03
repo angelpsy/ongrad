@@ -1,14 +1,14 @@
 const auth = {
     /**
-     * @param {string} login
+     * @param {string} email
      * @param {string} password
      * @return {Promise<Response>}
      */
-    login({ login, password }) {
+    login({ email, password }) {
         return new Promise(resolve => {
             setTimeout(() => {
                 console.group("success login");
-                console.log({ login, password });
+                console.log({ email, password });
                 console.groupEnd();
                 resolve(true);
             }, 1500);

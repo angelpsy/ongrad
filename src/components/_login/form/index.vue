@@ -2,10 +2,10 @@
     <form class="b-login-form" @submit.prevent="onSubmit" v-loading="isLoading">
         <UIInput
             class="b-login-form__field"
-            v-model="login"
-            label="Логин"
-            placeholder="Логин"
-            type="text"
+            v-model="email"
+            label="E-mail"
+            placeholder="E-mail"
+            type="email"
         />
         <UIInput
             class="b-login-form__field"
@@ -39,24 +39,24 @@ export default {
     },
     data() {
         return {
-            login: "",
+            email: "",
             password: "",
         };
     },
     computed: {
         isFormValid() {
-            return this.login && this.password;
+            return this.email && this.password;
         },
     },
     methods: {
         onClear() {
-            this.login = "";
+            this.email = "";
             this.password = "";
         },
         onSubmit() {
             if (!this.isFormValid) return;
             this.$emit("submit", {
-                login: this.login,
+                email: this.email,
                 password: this.password,
             });
         },

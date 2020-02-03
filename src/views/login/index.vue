@@ -20,12 +20,12 @@ export default {
         LoginForm,
     },
     methods: {
-        async onSubmitForm({ login, password }) {
+        async onSubmitForm({ email, password }) {
             this.errorStatus = null;
             this.isLoading = true;
             try {
                 await this.$store.dispatch(`auth/${ActionNames.LOGIN_FETCH}`, {
-                    login,
+                    email,
                     password,
                 });
                 alert("login success");
