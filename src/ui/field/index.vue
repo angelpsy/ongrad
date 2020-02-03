@@ -8,11 +8,11 @@
 </template>
 
 <style lang="scss">
+@import "../../assets/styles/vars";
 .ui-field {
     display: flex;
 }
-
 .ui-field__label {
-    margin-right: 10px;
+    margin-right: $base-grid-size;
 }
 </style>

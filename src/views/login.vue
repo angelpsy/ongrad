@@ -9,31 +9,21 @@
 
 <script>
 import LoginForm from "@/components/_login/form";
-import { ActionNames as ANsAuth } from "@/store/modules/auth";
+import { ActionNames } from "@/store/modules/auth";
+import { mixinLoading } from "./mixins/loading";
 
 export default {
     name: "PageLogin",
+    mixins: [mixinLoading],
     components: {
         LoginForm,
-    },
-    data() {
-        return {
-            isLoading: false,
-            errorStatus: null,
-            errorMessage: "",
-        };
-    },
-    computed: {
-        isError() {
-            return this.errorStatus !== null;
-        },
     },
     methods: {
         async onSubmitForm({ login, password }) {
             this.errorStatus = null;
             this.isLoading = true;
             try {
-                await this.$store.dispatch(`auth/${ANsAuth.LOGIN_FETCH}`, {
+                await this.$store.dispatch(`auth/${ActionNames.LOGIN_FETCH}`, {
                     login,
                     password,
                 });
