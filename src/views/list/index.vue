@@ -1,5 +1,5 @@
 <template>
-    <div class="p-list">
+    <div class="p-list" v-loading="isLoading">
         <List class="p-list__list">
             <ListItem
                 class="p-list__list-item"

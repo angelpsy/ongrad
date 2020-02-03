@@ -1,5 +1,5 @@
 <template>
-    <form class="b-add-item-form" @submit.prevent="">
+    <form class="b-add-item-form" @submit.prevent="onSubmit" v-loading="isLoading">
         <div
             v-for="field in fields"
             class="b-add-item-form__row"
@@ -31,9 +31,9 @@
             />
         </div>
         <div class="b-add-item-form__actions">
-            <UIButton @click="reset" class="b-add-item-form__action">Сбросить</UIButton>
+            <UIButton @click.prevent="reset" class="b-add-item-form__action" type="reset">Сбросить</UIButton>
             <UIButton
-                @click="onSubmit"
+                type="submit"
                 :disabled="!isChange"
                 class="b-add-item-form__action"
                 >Сохранить</UIButton
@@ -65,16 +65,19 @@ export default {
             type: Array,
             require: true,
         },
+        isLoading: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
             localValue: {},
-            count: 1, // хак для корректной обработки глубоких изменений в объекте localValue для подсчета isChange
         };
     },
     computed: {
         isChange() {
-            const keys = this.count && Object.keys(this.localValue);
+            const keys = Object.keys(this.localValue);
             return keys.some(key => !!this.localValue[key]);
         },
     },

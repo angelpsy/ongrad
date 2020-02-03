@@ -2,14 +2,9 @@ import Vue from "vue";
 import App from "./app.vue";
 import router from "./router";
 import store from "./store";
+import "./directives";
 
 Vue.config.productionTip = false;
-
-Vue.filter("lowerCase", function(value) {
-    if (!value) return "";
-    value = value.toString();
-    return value.toLowerCase();
-});
 
 new Vue({
     router,

@@ -2,6 +2,7 @@
     <div class="p-login">
         <LoginForm
             class="p-login__form"
+            :is-loading="isLoading"
             @submit="onSubmitForm"
         />
     </div>
@@ -40,4 +41,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.p-login {
+    display: flex;
+    justify-content: center;
+}
+</style>

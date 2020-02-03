@@ -1,5 +1,5 @@
 <template>
-    <form class="b-login-form" @submit.prevent="onSubmit">
+    <form class="b-login-form" @submit.prevent="onSubmit" v-loading="isLoading">
         <UIInput
             class="b-login-form__field"
             v-model="login"
@@ -16,7 +16,7 @@
         />
         <div class="b-login-form__actions">
             <UIButton @click="onClear" type="reset">Сбросить</UIButton>
-            <UIButton @click="onSubmit" type="submit" :disabled="!isFormValid">Отправить</UIButton>
+            <UIButton type="submit" :disabled="!isFormValid">Отправить</UIButton>
         </div>
     </form>
 </template>
@@ -30,6 +30,12 @@ export default {
     components: {
         UIInput,
         UIButton,
+    },
+    props: {
+        isLoading: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
@@ -58,6 +64,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

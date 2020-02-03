@@ -3,6 +3,7 @@
         <AddItemForm
             :value="value"
             :fields="fields"
+            :is-loading="isLoading"
             @fieldInput="fieldInput"
             @submit="onSubmitForm"
             @reset="reset"
@@ -37,6 +38,7 @@ export default {
                     `films/${ActionNames.SEND_ITEM}`,
                     props
                 );
+                this.reset();
             } catch (e) {
                 this.errorStatus = e.status || 0;
                 this.errorMessage =
