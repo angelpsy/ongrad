@@ -23,7 +23,9 @@
                     Рейтинг: {{ item.rating }}
                 </div>
                 <div class="b-list-item__desc">
-                    Описание: {{ item.description }}
+                    <UICollapse :text-expand="item.textActionMore">
+                        Описание: {{ item.description }}
+                    </UICollapse>
                 </div>
             </div>
         </div>
@@ -31,8 +33,12 @@
 </template>
 
 <script>
+import UICollapse from "@/ui/collapse";
 export default {
     name: "ListItem",
+    components: {
+        UICollapse,
+    },
     props: {
         item: {
             type: Object,

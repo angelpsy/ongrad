@@ -8,14 +8,14 @@ export const FIELDS = [
         typeInput: "text",
     },
     {
-        id: "short-desc",
+        id: "shortDesc",
         name: "Короткое описание",
         placeholder: "Короткое описание",
         defaultValue: "",
         typeField: "textarea",
     },
     {
-        id: "text-action-more",
+        id: "textActionMore",
         name: "Кнопка раскрытия описания",
         placeholder: "Кнопка раскрытия описания",
         defaultValue: "Смотреть подробнее",
