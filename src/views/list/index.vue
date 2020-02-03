@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mixinLoading } from "./mixins/loading";
+import { mixinLoading } from "../mixins/loading";
 import { GetterNames, ActionNames } from "@/store/modules/films";
 import List from "@/components/_list/list";
 import ListItem from "@/components/_list/list-item";
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/vars";
+@import "../../assets/styles/vars";
 .p-list__list-item {
     margin-bottom: 2 * $base-grid-size;
 }

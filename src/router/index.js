@@ -8,13 +8,13 @@ const routes = [
         path: "/",
         name: "home",
         component: () =>
-            import(/* webpackChunkName: "home" */ "../views/home"),
+            import(/* webpackChunkName: "home" */ "../views/home/index"),
     },
     {
         path: "/login",
         name: "login",
         component: () =>
-            import(/* webpackChunkName: "login" */ "../views/login"),
+            import(/* webpackChunkName: "login" */ "../views/login/index"),
         meta: {
             requiresGuest: true,
         },
@@ -23,13 +23,13 @@ const routes = [
         path: "/list",
         name: "list",
         component: () =>
-            import(/* webpackChunkName: "list" */ "../views/list"),
+            import(/* webpackChunkName: "list" */ "../views/list/index"),
     },
     {
         path: "/add-item",
         name: "add-item",
         component: () =>
-            import(/* webpackChunkName: "add-item" */ "../views/add-item"),
+            import(/* webpackChunkName: "add-item" */ "../views/add-item/index"),
         meta: {
             requiresAuth: true,
         },

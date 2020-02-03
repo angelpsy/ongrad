@@ -1,22 +1,10 @@
 <template>
-    <div class="ui-input__wrapper">
-        <UIField class="ui-input__field" v-if="label" :label="label">
-            <input
-                class="ui-input"
-                :value="localValue"
-                :id="id"
-                :disabled="disabled"
-                :required="required"
-                :autofocus="autofocus"
-                :type="type"
-                :placeholder="placeholder"
-                @change="onChange"
-                @input="onInput"
-            />
-        </UIField>
+    <UIField class="ui-input__field" v-if="label" :label="label">
         <input
-            v-else
             class="ui-input"
+            :class="{
+                'ui-input--error': isError,
+            }"
             :value="localValue"
             :id="id"
             :disabled="disabled"
@@ -24,10 +12,32 @@
             :autofocus="autofocus"
             :type="type"
             :placeholder="placeholder"
+            :min="min"
+            :max="max"
+            ref="input"
             @change="onChange"
             @input="onInput"
         />
-    </div>
+    </UIField>
+    <input
+        v-else
+        class="ui-input"
+        :class="{
+            'ui-input--error': isError,
+        }"
+        :value="localValue"
+        :id="id"
+        :disabled="disabled"
+        :required="required"
+        :autofocus="autofocus"
+        :type="type"
+        :placeholder="placeholder"
+        :min="min"
+        :max="max"
+        ref="input"
+        @change="onChange"
+        @input="onInput"
+    />
 </template>
 
 <script>
@@ -40,6 +50,10 @@ export default {
         UIField,
     },
     props: {
+        value: {
+            type: [String, Number, null],
+            require: true,
+        },
         name: {
             type: String,
             require: false,
@@ -73,20 +87,24 @@ export default {
             type: String,
             require: false,
         },
+        min: {
+            type: Number,
+            require: false,
+        },
+        max: {
+            type: Number,
+            require: false,
+        },
     },
     data() {
         return {
             localValue: "",
+            isError: false,
         };
     },
     watch: {
         value: {
             immediate: true,
-            handler(val) {
-                this.localValue = val;
-            },
-        },
-        localValue: {
             handler(val) {
                 this.localValue = val;
             },
@@ -99,6 +117,15 @@ export default {
         },
         onInput(event) {
             const value = event.target.value;
+            this.isError = false;
+            if (this.type === "number") {
+                if (
+                    (this.min !== undefined && value < this.min) ||
+                    (this.max !== undefined && value > this.max)
+                ) {
+                    this.isError = true;
+                }
+            }
             this.$emit("input", value);
         },
     },
@@ -106,5 +133,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/vars";
 .ui-input {}
+
+.ui-input--error {
+    border-color: $color-error;
+}
 </style>

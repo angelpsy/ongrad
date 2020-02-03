@@ -10,7 +10,7 @@
 <script>
 import LoginForm from "@/components/_login/form";
 import { ActionNames } from "@/store/modules/auth";
-import { mixinLoading } from "./mixins/loading";
+import { mixinLoading } from "../mixins/loading";
 
 export default {
     name: "PageLogin",

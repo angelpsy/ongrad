@@ -12,6 +12,12 @@ export const ActionNames = {
      * @return {Promise<Response>}
      */
     FETCH_LIST: "FETCH_LIST",
+    /**
+     * Action отправка данных отдельного фильма
+     * @param {Object} item Данные по фильму
+     * @return {Promise<Response>}
+     */
+    SEND_ITEM: "SEND_ITEM",
 };
 
 const state = {
@@ -38,6 +44,17 @@ const actions = {
                 const { films } = data;
                 commit(MutationNames.SET_LIST, films);
                 return films;
+            });
+    },
+    /**
+     * @param store
+     * @param item
+     * @return {Promise<Response>}
+     */
+    [ActionNames.SEND_ITEM](store, item ) {
+        return ApiFilms.sendItem(item)
+            .then(data => {
+                return data.film;
             });
     },
 };
