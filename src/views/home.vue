@@ -1,6 +1,18 @@
 <template>
     <div class="p-home">
-        home page
+        <nav class="p-home__nav">
+            <ul class="p-home__nav-list">
+                <li class="p-home__nav-item">
+                    <router-link :to="{ name: 'login' }">login</router-link>
+                </li>
+                <li class="p-home__nav-item">
+                    <router-link :to="{ name: 'list' }">list</router-link>
+                </li>
+                <li class="p-home__nav-item">
+                    <router-link :to="{ name: 'add-item' }">add item</router-link>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
