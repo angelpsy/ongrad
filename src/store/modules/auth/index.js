@@ -58,6 +58,17 @@ const actions = {
                 return Promise.reject(error);
             });
     },
+    /**
+     * @param commit
+     * @return {Promise<Response>}
+     */
+    [ActionNames.LOGOUT]({ commit }) {
+        return ApiAuth.loguot()
+            .then(data => {
+                commit(MutationNames.LOGOUT);
+                return data;
+            });
+    },
 };
 
 export default {
