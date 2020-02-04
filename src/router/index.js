@@ -7,8 +7,7 @@ const routes = [
     {
         path: "/",
         name: "home",
-        component: () =>
-            import(/* webpackChunkName: "home" */ "../views/home/index"),
+        redirect: { name: "list" },
     },
     {
         path: "/login",
