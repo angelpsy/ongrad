@@ -1,15 +1,14 @@
 import { films as data } from "@/fake-data/films";
-import {getID} from "@/helpers/id";
+import { getID } from "@/helpers/id";
+import { fetchWrapper } from "@/api";
 
 const films = {
     /**
-     * @return {Promise<Response>}
+     * @return {Promise<*>}
      */
     getList() {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                resolve({ films: data });
-            }, 1500);
+        return fetchWrapper("/posts").then(() => {
+            return { films: data };
         });
     },
     /**
